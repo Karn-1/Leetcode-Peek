@@ -1,17 +1,3 @@
-// we will apply the card adn all when the DOM is been load 
-// until the dom loaded then only do it increase the efficiency and imporve error free code 
-
-////////////////////////////////////////////////
-// we have make the custom request post to the leetcode server for the username information
-// //fetching// ///
-// the direct request to the leetcode server doesnt fulfill so we setup the proxy server that send the same request to it and we get data from that server 
-
-//https://cors-anywhere.herokuapp.com/
-// here we setp the demo server 
-// and successfully get the data from the help of the demo server through the leetcode 
-
-// Loggin username Mohit-0-1
-// Logging data  {data: {…}}
 ////////////////////////////////////////
 document.addEventListener("DOMContentLoaded",function(){
   const searchButton= document.getElementById('search-btn');
@@ -51,31 +37,25 @@ document.addEventListener("DOMContentLoaded",function(){
   }
 
   async function fetchUserDetails(username) {
-    //  have to find the query of api and call it 
-
-    // use the try as the error may come so it handel it 
+   
     try{
 
       // making like we searching and disable button
       searchButton.textContent = "searching...";
       searchButton.disabled =true;
 
-      // to make the old data hidden while searching
+     
 
-      statsContainer.style.display = 'none'; // Hide the UI section
+      statsContainer.style.display = 'none';
 
 
-      // const response = await fetch(url);
       const proxyurl = 'https://cors-anywhere.herokuapp.com/';
 
       const targeturl = 'https://leetcode.com/graphql/'
 
-      //concatenated url = https://cors-anywhere.herokuapp.com/https://leetcode.com/graphql/
-
       const myHeaders = new Headers();
       myHeaders.append("content-type" , "application/json");
-
-      // can also change the query 
+      
       const graphql = JSON.stringify({
         query: `
           query userSessionProgress($username: String!) {
@@ -112,15 +92,14 @@ document.addEventListener("DOMContentLoaded",function(){
 
     const response = await fetch(proxyurl + targeturl,requestOptions);
 
-      // checking did the response come or not 
       if(!response.ok){
         throw new Error("Unable to fetch the User details");
       }
-      // when its get the response convert to json 
+     
       const parsedData = await response.json();
       console.log("Logging data " , parsedData);
 
-      displayUserData(parsedData);// display data data on the ui
+      displayUserData(parsedData);
     }
 
     catch(error){
@@ -141,7 +120,6 @@ document.addEventListener("DOMContentLoaded",function(){
     }
 
   function displayUserData(parsedData) {
-  // 1) Reveal the stats container again
   statsContainer.style.display = 'block';
 
   // 2) Pull out the ranking
@@ -173,12 +151,9 @@ document.addEventListener("DOMContentLoaded",function(){
   function formatIndianRank(rank) {
   return rank.toLocaleString('en-IN'); // "en-IN" formats using Indian commas
 }
-
-  // making special for the rank 
-  // //label: "Global Rank",            value: `#${rank}
+    
   console.log(rank)
   let ProperRank = formatIndianRank(rank);
-  // just insetrting to the preform div for it
   forRank.innerHTML = `
   <h2>Global Rank :
   <span>${ProperRank}</span> </h2>
@@ -193,11 +168,7 @@ document.addEventListener("DOMContentLoaded",function(){
   `).join("");
 }
 
-  // as when the search box click event listener there that calls the fucntion 
   searchButton.addEventListener('click' , function(){
-    //- usernameInput is assumed to be the <input> field where the user types their username.
-    // - .value pulls out the text the user typed in that box.
-
     const username = usernameInput.value;
     console.log("Loggin username" , username);
 
@@ -209,10 +180,3 @@ document.addEventListener("DOMContentLoaded",function(){
   })
 
 })
-
-
-// 1 takes the username from the input by there id 
-// 2 checks the name is valid or not 
-//3  goes to fetch the data of the username dont direct to leetcode this shows error so we make the demo server and through tat we send request and passes the taken data to display 
-// 4 in the display user data fetch the data properly and then passes it into the update progress and also to add the cards of information also adding the cards of the information into premade div 
-//5 change the circle progress by finding % .
