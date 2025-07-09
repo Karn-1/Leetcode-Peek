@@ -1,10 +1,7 @@
-/*  background:conic-gradient(red var(--progress-degree,40%) ,rgb(241, 255, 52) 0% );
- */
 
 *{
   margin:0;
   padding:0;
-  /* "Include the element’s padding and border inside the specified width and height." */
   box-sizing:border-box; 
   font-family: 'Times New Roman', Times, serif;
 }
@@ -55,7 +52,7 @@ body{
 }
 
 #user-input {
-  background-color: rgb(231, 220, 119); /* vibrant green */
+  background-color: rgb(231, 220, 119); 
   width: 80%;
   padding: 0.4rem;
   border-radius: 5px;
@@ -85,14 +82,14 @@ body{
 }
 
 #search-btn:hover {
-  background-color: rgb(255, 141, 11); /* soft orange hover */
+  background-color: rgb(255, 141, 11); 
   color: #000;
 }
 .hidden{
   display: none;
 }
 .circle{
-  /* to make circle same width and heigth square made and then apply the borde radius make round */
+ 
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -105,8 +102,7 @@ body{
   color: rgb(0, 0, 0);
   font-weight: 700;
 
-  /*  most important to fill the circle with the variable input */
-  /* make the css varible and the js conver the data into the % adn apply  */
+ 
   background:conic-gradient(red  var(--progress-degree,0%) ,rgb(241, 255, 52) 0% );
   flex-direction:column;
 }
@@ -115,7 +111,7 @@ body{
   position: relative;
   z-index: 2;
 }
-/* to make them into the col the circles */
+
 .progress{
   display: flex;
   flex-direction: row;
